@@ -82,3 +82,7 @@ Tue Jun  6 15:35:15 EDT 2017
  added ssh and gpg
  git config --global user.signingkey B8B7C4916E5210CB
 
+Tue Jun  6 15:37:34 EDT 2017
+ read 00a-markdown.md
+ read 00b-fork_repo.md, edit and commit
+
