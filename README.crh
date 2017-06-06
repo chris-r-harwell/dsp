@@ -84,5 +84,60 @@ Tue Jun  6 15:35:15 EDT 2017
 
 Tue Jun  6 15:37:34 EDT 2017
  read 00a-markdown.md
- read 00b-fork_repo.md, edit and commit
+ read 00b-fork_repo.md, edit and commit and push
+
+git --version
+git version 2.9.4
+
+python3
+quit()
+
+ [crh@xps dsp]$ sudo dnf install python3-ipython\*
+
+ipython3
+ipython3 notebook
+sudo dnf search spyder
+sudo dnf install python3-spyder
+spyder3 
+loaded the Generic plugin 
+
+
+[crh@xps dsp]$ python3
+Python 3.5.3 (default, May 10 2017, 15:05:55) 
+[GCC 6.3.1 20161221 (Red Hat 6.3.1-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy
+>>> import scipy
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: No module named 'scipy'
+>>> import matplotlib
+>>> import pandas
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: No module named 'pandas'
+>>> import statsmodel
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: No module named 'statsmodel'
+>>> import sklearn
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: No module named 'sklearn'
+
+[crh@xps dsp]$ sudo dnf install -y python3-scipy python3-pandas\* python3-statsmodels\* python3-scikit\* 
+
+[crh@xps dsp]$ python3
+Python 3.5.3 (default, May 10 2017, 15:05:55) 
+[GCC 6.3.1 20161221 (Red Hat 6.3.1-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy
+>>> import scipy
+>>> import matplotlib
+>>> import pandas
+>>> import statsmodels
+>>> import sklearn
+>>> quit()
+
+sudo dnf install -y python3-pyflakes python3-flake8 python3-pytest-flakes python3-pep8
 

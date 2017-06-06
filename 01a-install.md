@@ -48,14 +48,14 @@ cross-platform.
 
 Did you install Python 2 or 3? Why?  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+I installed python3 because it is the recommended version.
 
 ### Q2. Which Python Version Installed   
 
 How can you check the version of Python installed if you happen to be on an unfamiliar computer?
-
->> REPLACE THIS TEXT WITH YOUR RESPONSE
-
- 
-
-
+```console
+[crh@xps dsp]$ python3 --version
+Python 3.5.3
+[crh@xps dsp]$ rpm -qf `which python3`
+python3-3.5.3-6.fc25.x86_64
+```
