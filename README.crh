@@ -1,0 +1,84 @@
+
+1/ Using Linux fedora 25 on Dell XPS.
+
+2/ docker
+https://fedoraproject.org/wiki/Docker
+
+sudo dnf install docker
+sudo systemctl status docker
+sudo docker run -i -t fedora /bin/bash
+[crh@xps dsp]$ sudo docker run fedora /bin/echo hello world
+hello world
+
+[crh@xps dsp]$ sudo docker info
+Containers: 7
+ Running: 0
+ Paused: 0
+ Stopped: 7
+Images: 6
+Server Version: 1.12.6
+Storage Driver: devicemapper
+ Pool Name: fedora_new--host--4-docker--pool
+ Pool Blocksize: 524.3 kB
+ Base Device Size: 10.74 GB
+ Backing Filesystem: xfs
+ Data file: 
+ Metadata file: 
+ Data Space Used: 1.219 GB
+ Data Space Total: 13.21 GB
+ Data Space Available: 11.99 GB
+ Metadata Space Used: 393.2 kB
+ Metadata Space Total: 146.8 MB
+ Metadata Space Available: 146.4 MB
+ Thin Pool Minimum Free Space: 1.321 GB
+ Udev Sync Supported: true
+ Deferred Removal Enabled: true
+ Deferred Deletion Enabled: false
+ Deferred Deleted Device Count: 0
+ Library Version: 1.02.136 (2016-11-05)
+Logging Driver: journald
+Cgroup Driver: systemd
+Plugins:
+ Volume: local
+ Network: overlay bridge null host
+Swarm: inactive
+Runtimes: oci runc
+Default Runtime: oci
+Security Options: seccomp selinux
+Kernel Version: 4.10.14-200.fc25.x86_64
+Operating System: Fedora 25 (Workstation Edition)
+OSType: linux
+Architecture: x86_64
+Number of Docker Hooks: 2
+CPUs: 4
+Total Memory: 7.702 GiB
+Name: xps
+ID: UXWO:LPDU:FS57:MNOR:2IPR:QKRY:D57B:65NG:7RVJ:JRPC:FRIO:OJCG
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Registry: https://index.docker.io/v1/
+Insecure Registries:
+ 172.30.0.0/16
+ 127.0.0.0/8
+Registries: docker.io (secure)
+
+
+
+
+[crh@xps dsp]$ sudo docker run busybox /bin/echo this is an echo
+Unable to find image 'busybox:latest' locally
+Trying to pull repository docker.io/library/busybox ... 
+sha256:32f093055929dbc23dec4d03e09dfe971f5973a9ca5cf059cbfb644c206aa83f: Pulling from docker.io/library/busybox
+7520415ce762: Pull complete 
+Digest: sha256:32f093055929dbc23dec4d03e09dfe971f5973a9ca5cf059cbfb644c206aa83f
+Status: Downloaded newer image for docker.io/busybox:latest
+this is an echo
+
+[crh@xps dsp]$ sudo dnf -y install fedora-dockerfiles
+
+Tue Jun  6 15:35:15 EDT 2017
+ updated to use clone of fork hosted on github.com/chris-r-harwell
+ added ssh and gpg
+ git config --global user.signingkey B8B7C4916E5210CB
+
