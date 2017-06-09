@@ -141,3 +141,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 sudo dnf install -y python3-pyflakes python3-flake8 python3-pytest-flakes python3-pep8
 
+
+
+
+[crh@xpc dsp]$ anaconda --version
+/usr/lib64/python3.5/site-packages/pyanaconda/startup_utils.py:20: PendingDeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+anaconda 25.20.9-1
+
