@@ -12,7 +12,7 @@ def linear_merge(list1, list2):
     OUTPUT: merged list of all elements in sorted order
     """
     idx = 0
-    while list1:
+    while(len(list1)):
         if list1[0] <= list2[idx]:
             list2.insert(idx, list1.pop(0))
         else:

@@ -11,13 +11,9 @@ def linear_merge(list1, list2):
     INPUT: two lists sorted in increasing order
     OUTPUT: merged list of all elements in sorted order
     """
-    idx = 0
-    while list1:
-        if list1[0] <= list2[idx]:
-            list2.insert(idx, list1.pop(0))
-        else:
-            idx += 1
-    return list2
+    list3 = list1 + list2
+    list3.sort()
+    return list3
 
 
 list1 = json.loads(sys.stdin.readline())
