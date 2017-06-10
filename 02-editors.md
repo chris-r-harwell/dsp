@@ -81,7 +81,7 @@ Upload these 3 files to the [`editors`](editors/) folder.
 
 What terminal editor will be your preferred choice of use? How did you make your decision?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+>> I choose vim, because I am already familiar with it and it works most places.
 
 --
 
@@ -89,6 +89,7 @@ What terminal editor will be your preferred choice of use? How did you make your
 
 What graphical editor will you use? How did you make your decision? What are some interesting features of your editor? What are some useful keyboard shortcuts for your editor? How do you customize your editor?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+>> Not sure which graphical editor I will use, maybe PyCharm or atomic? I typically prefer and am most comfortable with vim, but integration may be handy.  For example I'd like to be able to run pep8 or flake8 or similar from within the editor and have the cursor flow to each line.
+ 
 
  
