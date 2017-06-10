@@ -1,4 +1,17 @@
 
+00a-markdown.md - done
+00b-fork_repo.md - done
+01a-install.md - done on fedora (revisit on mac for completeness)
+01b-install_jupyter.md - todo!
+02-editors.md - done (although revisit PyCharm and atom and Rodeo)
+03-command_line.md
+04-git.md
+05a-python.md
+05b-python_advanced.md
+05c-python_pandas.md
+06-linear_algebra.md
+07-statistics.md
+08-more_resources.md
 1/ Using Linux fedora 25 on Dell XPS.
 
 2/ docker

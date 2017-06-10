@@ -44,7 +44,7 @@ What do the following commands do:
 `ls -t`  
 `ls -Glp`  
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+> > The ls command lists files, while the arguments adjust which files and how they are shown.  The -a shows the dot files which are normally not shown.  The -l, for long, displays more information such as the mode, owner, group, links and date.  Adding the -h argument, for human readable, additionally shows the sizes with a unit that decreases the number of digits, like 4k instead of 4096 and so forth.  They -lah arguments combines to show all files, including dot files, in long format and with human readable sizes.  The -t will sort the files in time order, with the most recently modified near the top. The -G will omit the group in the long listing and the -p will put an extra forward slash, '/', on directories.
 
 ---
 
@@ -52,7 +52,7 @@ What do the following commands do:
 
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+> > The `ls -alhrt` command will list all files in long format with human readblae time and do a reverse sort. The `ls -i` will show the inode number and `ls -1` will only list one item per line.
 
 ---
 
@@ -60,7 +60,7 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 
 What does `xargs` do? Give an example of how to use it.
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+> > Breaks up a long list of arguments into groups of one or more to be run at a time. For example ```find /tmp -name 'core.*' -type f -print0 | xargs -P10 --null /bin/rm -f``` will delete core files using 10 threads.
 
- 
+
 
