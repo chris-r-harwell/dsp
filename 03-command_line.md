@@ -19,7 +19,17 @@ Here's a list of items with which you should be familiar:
 
 Make a cheat sheet for yourself: a list of at least **ten** commands and what they do.  (Use the 8 items above and add a couple of your own.)  
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+Assume bash shell.
+```pwd`` prints the working directory
+```mkdir``` creates a directory
+```rmdir or rm -rf``` removes a directory, the latter if not empty and forces it.
+```touch myfile.txt``` will create an empty file named touch if not present already, otherwise it will update the timestamp.
+```rm file``` will remove a file
+```mv oldname newname``` will rename a file named oldname to newname.
+```ls -a``` will list files that were hidden may starting their name with a dot.
+```cp ~/onedir/foo ~/anotherdir/`` will copy the file named foo from the directory named onedir underneath the home directory to one named anotherdir underneath the home directory.
+```ps -elf f``` will list the processes in a nice tree format.
+```find / -name 'yo*'``` will find a file whose name starts with yo.
 
 ---
 
