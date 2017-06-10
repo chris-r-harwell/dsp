@@ -81,6 +81,10 @@ Tue Jun  6 15:35:15 EDT 2017
  updated to use clone of fork hosted on github.com/chris-r-harwell
  added ssh and gpg
  git config --global user.signingkey B8B7C4916E5210CB
+ test ssh:
+[crh@xps dsp]$ ssh -T git@github.com
+Hi chris-r-harwell! You've successfully authenticated, but GitHub does not provide shell access.
+
 
 Tue Jun  6 15:37:34 EDT 2017
  read 00a-markdown.md
@@ -149,3 +153,14 @@ sudo dnf install -y python3-pyflakes python3-flake8 python3-pytest-flakes python
   import imp
 anaconda 25.20.9-1
 
+- jupyter?
+
+sudo dnf install python3-jupyter\* python3-ipykernel python3-jupyroot python3-nbformat
+
+https://ask.fedoraproject.org/en/question/105166/difference-between-jupyter-and-ipython-notebooks/
+
+sudo dnf remove python3-jupyter\* python3-ipykernel python3-jupyroot python3-nbformat
+
+python-jupyter_core.noarch
+
+hmm.  still need more work/info to install/launch jupyter somehow
