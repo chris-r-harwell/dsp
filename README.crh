@@ -4,8 +4,8 @@
 01a-install.md - done on fedora (revisit on mac for completeness)
 01b-install_jupyter.md - todo!
 02-editors.md - done (although revisit PyCharm and atom and Rodeo)
-03-command_line.md
-04-git.md
+03-command_line.md - done
+04-git.md 
 05a-python.md
 05b-python_advanced.md
 05c-python_pandas.md
