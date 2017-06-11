@@ -2,6 +2,7 @@
 
 import csv
 import os
+import re
 import sys
 
 
@@ -49,33 +50,62 @@ with open('faculty.csv', 'w') as f:
 
 
 def read_data(filename):
-    """Returns a list of lists representing the rows of the csv file data.
+    """
+    Returns a list of dictionaries representing the rows of the csv file data.
 
-    Arguments: filename is the name of a csv file (as a string)
-    Returns: list of lists of strings,
-      where every line is split into a list of values.
-        ex: ['Arsenal', 38, 26, 9, 3, 79, 36, 87]
+    INPUT: filename is the name of a csv file (as a string)
+
+    OUTPUT: list of dictionaries using the header line in the file as the keys 
+             and the values set to the strings in that cell of the row.
     """
     with open(filename) as f:
-        csv_reader = csv.reader(f)
-        reader = csv.DictReader(f)
-        data = list(csv_reader)
+        reader = csv.DictReader(f, skipinitialspace = True)
+        if 'degree' not in reader.fieldnames:
+            # expecting: name, degree, title, email
+            raise ValueError('could not find degree in csv header {}'.format(reader.fieldnames))
+        data = list(reader)
+        # print('data:')
+        # print(repr(data))
         return data
 
-...     reader = csv.DictReader(csvfile)
-...     for row in reader:
-...         print(row['first_name'], row['last_name'])
-   
 
 def count_degrees(csv_file_name):
+    """
+    In this version we get a list of key, value dictionaries for each row.
+    Then, compile a standardized (all upper case, remove the period) set of
+     degrees, degree_list.
+    From that standardized list, we create a uniq set to initialize our
+     answer/output dictionary, degree_dict.
+    Then use the regular expression to count occurences and update the
+     dictionary.
+    INPUT: filename
+    OUTPUT: dictionary with degree keys and counts as values
+    """
     data = read_data(csv_file_name)
-    print('read in')
+    # print('read in')
+    # for row in data:
+    #     print(repr(row))
+    degree_list = [ ]
     for row in data:
-        print(repr(row))
-
-    degree_list = [ x[1].split() for x in data[1:] ]
-    print(repr(degree_list))
-
+        # print(row['degree'])
+        for item in row['degree'].split():
+            consistent_item = item.upper().replace('.','')
+            degree_list.append(consistent_item)
+    degree_list.sort()
+    # print(repr(degree_list))
+    degree_dict = {}
+    degree_dict = degree_dict.fromkeys(set(degree_list), 0)
+    # print(repr(degree_dict))
+    for k in degree_dict.keys():
+        regexp = re.compile(k)
+        count = 0
+        for d in degree_list:
+            if regexp.search(d):
+                count += 1
+        degree_dict[k] = count
+    # print(repr(degree_dict))
+    return degree_dict
+   
 
 try:
     degreecounts = count_degrees('faculty.csv')
