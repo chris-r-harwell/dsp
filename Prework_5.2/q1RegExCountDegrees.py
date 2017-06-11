@@ -55,11 +55,11 @@ def read_data(filename):
 
     INPUT: filename is the name of a csv file (as a string)
 
-    OUTPUT: list of dictionaries using the header line in the file as the keys 
+    OUTPUT: list of dictionaries using the header line in the file as the keys
              and the values set to the strings in that cell of the row.
     """
     with open(filename) as f:
-        reader = csv.DictReader(f, skipinitialspace = True)
+        reader = csv.DictReader(f, skipinitialspace=True)
         if 'degree' not in reader.fieldnames:
             # expecting: name, degree, title, email
             raise ValueError('could not find degree in csv header {}'.format(reader.fieldnames))
@@ -69,7 +69,7 @@ def read_data(filename):
         return data
 
 
-def count_degrees(csv_file_name):
+def count_degrees_by_standardization(csv_file_name):
     """
     In this version we get a list of key, value dictionaries for each row.
     Then, compile a standardized (all upper case, remove the period) set of
@@ -82,20 +82,14 @@ def count_degrees(csv_file_name):
     OUTPUT: dictionary with degree keys and counts as values
     """
     data = read_data(csv_file_name)
-    # print('read in')
-    # for row in data:
-    #     print(repr(row))
-    degree_list = [ ]
+    degree_list = []
     for row in data:
-        # print(row['degree'])
         for item in row['degree'].split():
-            consistent_item = item.upper().replace('.','')
+            consistent_item = item.upper().replace('.', '')
             degree_list.append(consistent_item)
     degree_list.sort()
-    # print(repr(degree_list))
     degree_dict = {}
     degree_dict = degree_dict.fromkeys(set(degree_list), 0)
-    # print(repr(degree_dict))
     for k in degree_dict.keys():
         regexp = re.compile(k)
         count = 0
@@ -103,9 +97,63 @@ def count_degrees(csv_file_name):
             if regexp.search(d):
                 count += 1
         degree_dict[k] = count
-    # print(repr(degree_dict))
     return degree_dict
-   
+
+
+def count_degrees_by_regexp(csv_file_name):
+    """
+    solution degrees = ['MD', 'MA', 'SCD', 'BSED', 'PHD', '0', 'MPH', 'MS',
+      'JD']
+    strings present in csv file:
+    {'PhD', 'MA', 'MS', 'Ph.D', '0', 'B.S.Ed.', 'MPH', 'JD', 'Ph.D.', 'M.S.',
+      'ScD', 'Sc.D.', 'MD'}
+    # regexp key:
+    # (?i) case-insensitive
+    # ^ start
+    # $ end
+    # \.* zero or more '.
+    #
+
+    In this version we get a list of key, value dictionaries for each row.
+    Then, use a dictionary of standardized degreee regular expression to do
+    the counting.  Stardize by converting to all upper case and removing
+    periods.
+    From that, we initialize our answer/output dictionary, degree_dict.
+    Then use the regular expression to count occurences and update the
+     dictionary.
+    INPUT: filename
+    OUTPUT: dictionary with degree keys and counts as values
+    """
+    degree_regexp_dict = {'MD': re.compile('(?i)^M\.*D\.*$'),
+                          'MA': re.compile('(?i)^M\.*A\.*$'),
+                          'SCD': re.compile('(?i)^S\.*C\.*D\.*$'),
+                          'BSED': re.compile('(?i)^B\.*S\.*E\.*D\.*$'),
+                          'PHD': re.compile('(?i)^Ph\.*D\.*$'),
+                          '0': re.compile('^0$'),
+                          'MPH': re.compile('(?i)^M\.*P\.*H\.*$'),
+                          'MS': re.compile('(?i)^M\.*S\.*$'),
+                          'JD': re.compile('(?i)^J\.*D\.*$'),
+                          }
+    data = read_data(csv_file_name)
+    degree_list = []
+    for row in data:
+        for item in row['degree'].split():
+            degree_list.append(item)
+    degree_dict = {}
+    degree_dict = degree_dict.fromkeys(set(degree_regexp_dict), 0)
+    for k in degree_dict.keys():
+        regexp = degree_regexp_dict[k]
+        count = 0
+        for d in degree_list:
+            if regexp.search(d):
+                count += 1
+        degree_dict[k] = count
+    return degree_dict
+
+
+def count_degrees(csv_file_name):
+    return count_degrees_by_regexp(csv_file_name)
+
 
 try:
     degreecounts = count_degrees('faculty.csv')
