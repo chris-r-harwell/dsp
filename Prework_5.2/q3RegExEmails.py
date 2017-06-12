@@ -60,118 +60,41 @@ def read_data(filename):
     """
     with open(filename) as f:
         reader = csv.DictReader(f, skipinitialspace=True)
-        if 'degree' not in reader.fieldnames:
+        if 'email' not in reader.fieldnames:
             # expecting: name, degree, title, email
-            raise ValueError('could not find degree in csv header {}'.format(reader.fieldnames))
+            raise ValueError('could not find email in csv header {}'
+                             .format(reader.fieldnames))
         data = list(reader)
         # print('data:')
         # print(repr(data))
         return data
 
 
-def count_degrees_by_standardization(csv_file_name):
+def get_emails(csv_file_name):
     """
     In this version we get a list of key, value dictionaries for each row.
-    Then, compile a standardized (all upper case, remove the period) set of
-     degrees, degree_list.
-    From that standardized list, we create a uniq set to initialize our
-     answer/output dictionary, degree_dict.
-    Then use the regular expression to count occurences and update the
-     dictionary.
+    Then we make a list of emails.
     INPUT: filename
-    OUTPUT: dictionary with degree keys and counts as values
+    OUTPUT: list of emails
     """
     data = read_data(csv_file_name)
-    degree_list = []
+    email_list = []
     for row in data:
-        for item in row['degree'].split():
-            consistent_item = item.upper().replace('.', '')
-            degree_list.append(consistent_item)
-    degree_list.sort()
-    degree_dict = {}
-    degree_dict = degree_dict.fromkeys(set(degree_list), 0)
-    for k in degree_dict.keys():
-        regexp = re.compile('^' + k + '$')
-        count = 0
-        for d in degree_list:
-            if regexp.search(d):
-                count += 1
-        degree_dict[k] = count
-    return degree_dict
+        email_list.append(row['email'])
+    # print(repr(email_list))
+    return email_list
 
 
-def count_degrees_by_regexp(csv_file_name):
-    """
-    solution degrees = ['MD', 'MA', 'SCD', 'BSED', 'PHD', '0', 'MPH', 'MS',
-      'JD']
-    strings present in csv file:
-    {'PhD', 'MA', 'MS', 'Ph.D', '0', 'B.S.Ed.', 'MPH', 'JD', 'Ph.D.', 'M.S.',
-      'ScD', 'Sc.D.', 'MD'}
-    # regexp key:
-    # (?i) case-insensitive
-    # ^ start
-    # $ end
-    # \.* zero or more '.
-    #
-
-    In this version we get a list of key, value dictionaries for each row.
-    Then, use a dictionary of standardized degreee regular expression to do
-    the counting.  Stardize by converting to all upper case and removing
-    periods.
-    From that, we initialize our answer/output dictionary, degree_dict.
-    Then use the regular expression to count occurences and update the
-     dictionary.
-    INPUT: filename
-    OUTPUT: dictionary with degree keys and counts as values
-    """
-    degree_regexp_dict = {'MD': re.compile('(?i)^M\.*D\.*$'),
-                          'MA': re.compile('(?i)^M\.*A\.*$'),
-                          'SCD': re.compile('(?i)^S\.*C\.*D\.*$'),
-                          'BSED': re.compile('(?i)^B\.*S\.*E\.*D\.*$'),
-                          'PHD': re.compile('(?i)^Ph\.*D\.*$'),
-                          '0': re.compile('^0$'),
-                          'MPH': re.compile('(?i)^M\.*P\.*H\.*$'),
-                          'MS': re.compile('(?i)^M\.*S\.*$'),
-                          'JD': re.compile('(?i)^J\.*D\.*$'),
-                          }
-    data = read_data(csv_file_name)
-    degree_list = []
-    for row in data:
-        for item in row['degree'].split():
-            degree_list.append(item)
-    degree_dict = {}
-    degree_dict = degree_dict.fromkeys(set(degree_regexp_dict), 0)
-    for k in degree_dict.keys():
-        regexp = degree_regexp_dict[k]
-        count = 0
-        for d in degree_list:
-            if regexp.search(d):
-                count += 1
-        degree_dict[k] = count
-    return degree_dict
-
-
-def count_degrees(csv_file_name):
-    return count_degrees_by_regexp(csv_file_name)
+def emails(csv_file_name):
+    return get_emails(csv_file_name)
 
 
 try:
-    degreecounts = count_degrees('faculty.csv')
+    email_list = emails('faculty.csv')
     os.remove('faculty.csv')
 except Exception as e:
     os.remove('faculty.csv')
     raise(e)
 
-degreecounts = {
-    str(key).replace(' ', '').replace('.', '').upper(): val
-    for key, val in degreecounts.items()
-}
-
-degrees = ['MD', 'MA', 'SCD', 'BSED', 'PHD', '0', 'MPH', 'MS', 'JD']
-assert len(degrees) >= len(degreecounts),\
-        'did you get all the different degrees?'
-assert len(degrees) == len(degreecounts),\
-        'your output has too many degrees'
-for degree in degrees:
-    count = degreecounts.get(degree, -1)
-    print(count)
+for email in sorted(email_list):
+    print(email.lower())

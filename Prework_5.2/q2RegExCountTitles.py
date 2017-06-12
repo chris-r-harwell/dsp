@@ -60,53 +60,57 @@ def read_data(filename):
     """
     with open(filename) as f:
         reader = csv.DictReader(f, skipinitialspace=True)
-        if 'degree' not in reader.fieldnames:
+        if 'title' not in reader.fieldnames:
             # expecting: name, degree, title, email
-            raise ValueError('could not find degree in csv header {}'.format(reader.fieldnames))
+            raise ValueError('could not find title in csv header {}'
+                             .format(reader.fieldnames))
         data = list(reader)
         # print('data:')
         # print(repr(data))
         return data
 
 
-def count_degrees_by_standardization(csv_file_name):
+def count_titles_by_standardization(csv_file_name):
     """
     In this version we get a list of key, value dictionaries for each row.
-    Then, compile a standardized (all upper case, remove the period) set of
-     degrees, degree_list.
+    Then, compile a standardized (all upper case, replace is with of) set of
+     titles, title_list.
     From that standardized list, we create a uniq set to initialize our
-     answer/output dictionary, degree_dict.
+     answer/output dictionary, title_dict.
     Then use the regular expression to count occurences and update the
      dictionary.
     INPUT: filename
-    OUTPUT: dictionary with degree keys and counts as values
+    OUTPUT: dictionary with title keys and counts as values
     """
     data = read_data(csv_file_name)
-    degree_list = []
+    title_list = []
     for row in data:
-        for item in row['degree'].split():
-            consistent_item = item.upper().replace('.', '')
-            degree_list.append(consistent_item)
-    degree_list.sort()
-    degree_dict = {}
-    degree_dict = degree_dict.fromkeys(set(degree_list), 0)
-    for k in degree_dict.keys():
+        item = row['title']
+        consistent_item = item.upper().replace(' IS ', ' OF ')
+        title_list.append(consistent_item)
+    title_list.sort()
+    # print(repr(set(title_list)))
+    title_dict = {}
+    title_dict = title_dict.fromkeys(set(title_list), 0)
+    # print(repr(title_dict))
+    for k in title_dict.keys():
         regexp = re.compile('^' + k + '$')
         count = 0
-        for d in degree_list:
+        for d in title_list:
             if regexp.search(d):
                 count += 1
-        degree_dict[k] = count
-    return degree_dict
+        title_dict[k] = count
+    # print('std: ' + repr(title_dict))
+    return title_dict
 
 
-def count_degrees_by_regexp(csv_file_name):
+def count_titles_by_regexp(csv_file_name):
     """
-    solution degrees = ['MD', 'MA', 'SCD', 'BSED', 'PHD', '0', 'MPH', 'MS',
-      'JD']
+    solution titles = ['professor', 'associate', 'assistant']
     strings present in csv file:
-    {'PhD', 'MA', 'MS', 'Ph.D', '0', 'B.S.Ed.', 'MPH', 'JD', 'Ph.D.', 'M.S.',
-      'ScD', 'Sc.D.', 'MD'}
+    {'Professor of Biostatistics', 'Associate Professor of Biostatistics',
+     'Assistant Professor is Biostatistics',
+     'Assistant Professor of Biostatistics'}
     # regexp key:
     # (?i) case-insensitive
     # ^ start
@@ -115,63 +119,53 @@ def count_degrees_by_regexp(csv_file_name):
     #
 
     In this version we get a list of key, value dictionaries for each row.
-    Then, use a dictionary of standardized degreee regular expression to do
-    the counting.  Stardize by converting to all upper case and removing
-    periods.
-    From that, we initialize our answer/output dictionary, degree_dict.
+    Then, use a dictionary of standardized title regular expressions.
+    From that, we initialize our answer/output dictionary, title_dict.
     Then use the regular expression to count occurences and update the
      dictionary.
     INPUT: filename
-    OUTPUT: dictionary with degree keys and counts as values
+    OUTPUT: dictionary with title keys and counts as values
     """
-    degree_regexp_dict = {'MD': re.compile('(?i)^M\.*D\.*$'),
-                          'MA': re.compile('(?i)^M\.*A\.*$'),
-                          'SCD': re.compile('(?i)^S\.*C\.*D\.*$'),
-                          'BSED': re.compile('(?i)^B\.*S\.*E\.*D\.*$'),
-                          'PHD': re.compile('(?i)^Ph\.*D\.*$'),
-                          '0': re.compile('^0$'),
-                          'MPH': re.compile('(?i)^M\.*P\.*H\.*$'),
-                          'MS': re.compile('(?i)^M\.*S\.*$'),
-                          'JD': re.compile('(?i)^J\.*D\.*$'),
-                          }
+    title_regexp_dict = {'professor': re.compile('(?i)^Prof.*$'),
+                         'associate': re.compile('(?i)^Associate Prof.*$'),
+                         'assistant': re.compile('(?i)^Assistant Prof.*$'),
+                         }
     data = read_data(csv_file_name)
-    degree_list = []
+    title_list = []
     for row in data:
-        for item in row['degree'].split():
-            degree_list.append(item)
-    degree_dict = {}
-    degree_dict = degree_dict.fromkeys(set(degree_regexp_dict), 0)
-    for k in degree_dict.keys():
-        regexp = degree_regexp_dict[k]
+        title_list.append(row['title'])
+    title_dict = {}
+    title_dict = title_dict.fromkeys(set(title_regexp_dict), 0)
+    for k in title_dict.keys():
+        regexp = title_regexp_dict[k]
         count = 0
-        for d in degree_list:
-            if regexp.search(d):
+        for d in title_list:
+            if regexp.fullmatch(d):
                 count += 1
-        degree_dict[k] = count
-    return degree_dict
+        title_dict[k] = count
+    # print('regexp: ' + repr(title_dict))
+    return title_dict
 
 
-def count_degrees(csv_file_name):
-    return count_degrees_by_regexp(csv_file_name)
-
+def count_titles(csv_file_name):
+    # a = count_titles_by_standardization(csv_file_name)
+    return count_titles_by_regexp(csv_file_name)
 
 try:
-    degreecounts = count_degrees('faculty.csv')
+    titlecounts = count_titles('faculty.csv')
     os.remove('faculty.csv')
 except Exception as e:
     os.remove('faculty.csv')
     raise(e)
 
-degreecounts = {
-    str(key).replace(' ', '').replace('.', '').upper(): val
-    for key, val in degreecounts.items()
+titlecounts = {
+    str(key).replace(' ', '').replace('.', '').lower()[:9]: val
+    for key, val in titlecounts.items()
 }
 
-degrees = ['MD', 'MA', 'SCD', 'BSED', 'PHD', '0', 'MPH', 'MS', 'JD']
-assert len(degrees) >= len(degreecounts),\
-        'did you get all the different degrees?'
-assert len(degrees) == len(degreecounts),\
-        'your output has too many degrees'
-for degree in degrees:
-    count = degreecounts.get(degree, -1)
+titles = ['professor', 'associate', 'assistant']
+assert len(titles) >= len(titlecounts), 'did you get all the different titles?'
+assert len(titles) == len(titlecounts), 'your output has too many titles'
+for title in titles:
+    count = titlecounts.get(title, -1)
     print(count)
