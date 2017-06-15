@@ -1,3 +1,6 @@
+HackerRank Info:
+    Cohort Enrolled:  NYC Summer 2017
+    Cohort ID:  nyc17_ds12
 
 00a-markdown.md - done
 00b-fork_repo.md - done
@@ -6,9 +9,9 @@
 02-editors.md - done (although revisit PyCharm and atom and Rodeo)
 03-command_line.md - done
 04-git.md 
-05a-python.md
-05b-python_advanced.md
-05c-python_pandas.md
+05a-python.md - hackerrank - done
+05b-python_advanced.md - hackerrank - done
+05c-python_pandas.md - hackerrank - https://www.hackerrank.com/tests/beg202nchad/a3ae8be11d8345e83400e68ea9fa10e5
 06-linear_algebra.md
 07-statistics.md
 08-more_resources.md
@@ -177,3 +180,161 @@ sudo dnf remove python3-jupyter\* python3-ipykernel python3-jupyroot python3-nbf
 python-jupyter_core.noarch
 
 hmm.  still need more work/info to install/launch jupyter somehow
+Tue Jun 13 17:38:50 EDT 2017
+
+Try this on xpc
+:
+[crh@xpc dsp]$ pip3 install --user jupyter
+Collecting jupyter
+  Using cached jupyter-1.0.0-py2.py3-none-any.whl
+Collecting nbconvert (from jupyter)
+  Using cached nbconvert-5.2.1-py2.py3-none-any.whl
+Collecting jupyter-console (from jupyter)
+  Using cached jupyter_console-5.1.0-py2.py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): ipykernel in /usr/lib/python3.5/site-packages (from jupyter)
+Collecting qtconsole (from jupyter)
+  Using cached qtconsole-4.3.0-py2.py3-none-any.whl
+Collecting ipywidgets (from jupyter)
+  Using cached ipywidgets-6.0.0-py2.py3-none-any.whl
+Collecting notebook (from jupyter)
+  Using cached notebook-5.0.0-py2.py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): jinja2 in /usr/lib/python3.5/site-packages (from nbconvert->jupyter)
+Requirement already satisfied (use --upgrade to upgrade): mistune!=0.6 in /usr/lib64/python3.5/site-packages (from nbconvert->jupyter)
+Requirement already satisfied (use --upgrade to upgrade): jupyter-core in /usr/lib/python3.5/site-packages (from nbconvert->jupyter)
+Collecting pandocfilters>=1.4.1 (from nbconvert->jupyter)
+  Using cached pandocfilters-1.4.1.tar.gz
+Collecting testpath (from nbconvert->jupyter)
+  Using cached testpath-0.3.1-py2.py3-none-any.whl
+Collecting bleach (from nbconvert->jupyter)
+  Using cached bleach-2.0.0-py2.py3-none-any.whl
+Collecting entrypoints>=0.2.2 (from nbconvert->jupyter)
+  Using cached entrypoints-0.2.3-py2.py3-none-any.whl
+Collecting traitlets>=4.2 (from nbconvert->jupyter)
+  Using cached traitlets-4.3.2-py2.py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): pygments in /usr/lib/python3.5/site-packages (from nbconvert->jupyter)
+Requirement already satisfied (use --upgrade to upgrade): nbformat in /usr/lib/python3.5/site-packages (from nbconvert->jupyter)
+Collecting prompt-toolkit<2.0.0,>=1.0.0 (from jupyter-console->jupyter)
+  Using cached prompt_toolkit-1.0.14-py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): ipython in /usr/lib/python3.5/site-packages (from jupyter-console->jupyter)
+Requirement already satisfied (use --upgrade to upgrade): jupyter-client in /usr/lib/python3.5/site-packages (from jupyter-console->jupyter)
+Requirement already satisfied (use --upgrade to upgrade): ipython-genutils in /usr/lib/python3.5/site-packages (from qtconsole->jupyter)
+Collecting widgetsnbextension~=2.0.0 (from ipywidgets->jupyter)
+  Using cached widgetsnbextension-2.0.0-py2.py3-none-any.whl
+Collecting terminado>=0.3.3; sys_platform != "win32" (from notebook->jupyter)
+  Using cached terminado-0.6.tar.gz
+Requirement already satisfied (use --upgrade to upgrade): tornado>=4 in /usr/lib64/python3.5/site-packages (from notebook->jupyter)
+Requirement already satisfied (use --upgrade to upgrade): MarkupSafe in /usr/lib64/python3.5/site-packages (from jinja2->nbconvert->jupyter)
+Collecting html5lib>=0.99999999 (from bleach->nbconvert->jupyter)
+  Using cached html5lib-0.999999999-py2.py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): six in /usr/lib/python3.5/site-packages (from bleach->nbconvert->jupyter)
+Requirement already satisfied (use --upgrade to upgrade): decorator in /usr/lib/python3.5/site-packages (from traitlets>=4.2->nbconvert->jupyter)
+Collecting wcwidth (from prompt-toolkit<2.0.0,>=1.0.0->jupyter-console->jupyter)
+  Using cached wcwidth-0.1.7-py2.py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): ptyprocess in /usr/lib/python3.5/site-packages (from terminado>=0.3.3; sys_platform != "win32"->notebook->jupyter)
+Requirement already satisfied (use --upgrade to upgrade): setuptools>=18.5 in /usr/lib/python3.5/site-packages (from html5lib>=0.99999999->bleach->nbconvert->jupyter)
+Collecting webencodings (from html5lib>=0.99999999->bleach->nbconvert->jupyter)
+  Using cached webencodings-0.5.1-py2.py3-none-any.whl
+Installing collected packages: pandocfilters, testpath, webencodings, html5lib, bleach, entrypoints, traitlets, nbconvert, wcwidth, prompt-toolkit, jupyter-console, qtconsole, terminado, notebook, widgetsnbextension, ipywidgets, jupyter
+  Running setup.py install for pandocfilters ... done
+  Running setup.py install for terminado ... done
+Successfully installed bleach entrypoints html5lib-0.999 ipywidgets jupyter jupyter-console nbconvert notebook pandocfilters prompt-toolkit qtconsole terminado testpath traitlets-4.0.0 wcwidth webencodings widgetsnbextension
+You are using pip version 8.1.2, however version 9.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+[crh@xpc dsp]$ 
+
+And now this seems to work:
+ [crh@xpc dsp]$ python3.5 ~/.local/lib/python3.5/site-packages/jupyter.py notebook
+[I 17:41:52.794 NotebookApp] Copying /home/crh/.ipython/profile_default/security/notebook_cookie_secret -> /home/crh/.local/share/jupyter/notebook_cookie_secret
+[I 17:41:52.803 NotebookApp] Writing notebook server cookie secret to /run/user/1000/jupyter/notebook_cookie_secret
+[I 17:41:52.858 NotebookApp] Serving notebooks from local directory: /home/crh/git/dsp
+[I 17:41:52.858 NotebookApp] 0 active kernels 
+[I 17:41:52.858 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=4ee9023144ad2479bea46eb5d2dd52ba1f99c0dbffe64ede
+[I 17:41:52.858 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 17:41:52.859 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=4ee9023144ad2479bea46eb5d2dd52ba1f99c0dbffe64ede
+
+
+OR this?
+[crh@xpc dsp]$ sudo dnf clean packages
+
+27 files removed
+[crh@xpc dsp]$ 
+[crh@xpc dsp]$ sudo dnf install python3-nbformat.noarch python3-ipykernel.noarch python3-qtconsole.noarch python3-jupyter-client
+Last metadata expiration check: 1:42:22 ago on Tue Jun 13 16:17:25 2017.
+Package python3-ipykernel-4.5.2-3.fc25.noarch is already installed, skipping.
+Dependencies resolved.
+=========================================================================================================
+ Package                             Arch              Version                  Repository          Size
+=========================================================================================================
+Installing:
+ python3-ipython_genutils            noarch            0.1.0-5.fc25             fedora              52 k
+ python3-jupyter-client              noarch            4.4.0-1.fc25             updates            169 k
+ python3-jupyter-core                noarch            4.1.0-5.fc25             fedora              77 k
+ python3-nbformat                    noarch            4.0.0-5.fc25             fedora             150 k
+ python3-qtconsole                   noarch            4.2.1-6.fc25             updates            181 k
+ python3-traitlets                   noarch            4.0.0-4.fc25             fedora             123 k
+
+Transaction Summary
+=========================================================================================================
+Install  6 Packages
+
+Total download size: 752 k
+Installed size: 3.5 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/6): python3-jupyter-client-4.4.0-1.fc25.noarch.rpm                    1.2 MB/s | 169 kB     00:00    
+(2/6): python3-qtconsole-4.2.1-6.fc25.noarch.rpm                         1.0 MB/s | 181 kB     00:00    
+(3/6): python3-nbformat-4.0.0-5.fc25.noarch.rpm                          513 kB/s | 150 kB     00:00    
+(4/6): python3-ipython_genutils-0.1.0-5.fc25.noarch.rpm                  280 kB/s |  52 kB     00:00    
+(5/6): python3-traitlets-4.0.0-4.fc25.noarch.rpm                         542 kB/s | 123 kB     00:00    
+(6/6): python3-jupyter-core-4.1.0-5.fc25.noarch.rpm                      419 kB/s |  77 kB     00:00    
+---------------------------------------------------------------------------------------------------------
+Total                                                                    519 kB/s | 752 kB     00:01     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Installing  : python3-ipython_genutils-0.1.0-5.fc25.noarch                                         1/6 
+  Installing  : python3-traitlets-4.0.0-4.fc25.noarch                                                2/6 
+  Installing  : python3-jupyter-core-4.1.0-5.fc25.noarch                                             3/6 
+  Installing  : python3-jupyter-client-4.4.0-1.fc25.noarch                                           4/6 
+  Installing  : python3-qtconsole-4.2.1-6.fc25.noarch                                                5/6 
+  Installing  : python3-nbformat-4.0.0-5.fc25.noarch                                                 6/6 
+  Verifying   : python3-nbformat-4.0.0-5.fc25.noarch                                                 1/6 
+  Verifying   : python3-qtconsole-4.2.1-6.fc25.noarch                                                2/6 
+  Verifying   : python3-jupyter-client-4.4.0-1.fc25.noarch                                           3/6 
+  Verifying   : python3-ipython_genutils-0.1.0-5.fc25.noarch                                         4/6 
+  Verifying   : python3-traitlets-4.0.0-4.fc25.noarch                                                5/6 
+  Verifying   : python3-jupyter-core-4.1.0-5.fc25.noarch                                             6/6 
+
+Installed:
+  python3-ipython_genutils.noarch 0.1.0-5.fc25         python3-jupyter-client.noarch 4.4.0-1.fc25        
+  python3-jupyter-core.noarch 4.1.0-5.fc25             python3-nbformat.noarch 4.0.0-5.fc25              
+  python3-qtconsole.noarch 4.2.1-6.fc25                python3-traitlets.noarch 4.0.0-4.fc25             
+
+Complete!
+[crh@xpc dsp]$ jupyter-
+jupyter-3                 jupyter-kernelspec-3      jupyter-nbextension       jupyter-serverextension
+jupyter-3.5               jupyter-kernelspec-3.5    jupyter-notebook          jupyter-trust
+jupyter-bundlerextension  jupyter-migrate-3         jupyter-qtconsole         
+jupyter-console           jupyter-migrate-3.5       jupyter-qtconsole-3       
+jupyter-kernelspec        jupyter-nbconvert         jupyter-qtconsole-3.5     
+[crh@xpc dsp]$ jupyter-3.5 notebook
+[I 18:00:11.632 NotebookApp] The port 8888 is already in use, trying another port.
+[I 18:00:11.665 NotebookApp] Serving notebooks from local directory: /home/crh/git/dsp
+[I 18:00:11.665 NotebookApp] 0 active kernels 
+[I 18:00:11.665 NotebookApp] The Jupyter Notebook is running at: http://localhost:8889/?token=1aebb80f2f4de5de16fa463c17fd2907b86d95fb0d01e1a5
+[I 18:00:11.665 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 18:00:11.666 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8889/?token=1aebb80f2f4de5de16fa463c17fd2907b86d95fb0d01e1a5
+
+but then 
+[W 18:00:43.870 NotebookApp] Native kernel (python3) is not available
+
