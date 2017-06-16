@@ -23,6 +23,12 @@ https://fedoraproject.org/wiki/Docker
 sudo dnf install docker
 sudo systemctl status docker
 sudo docker run -i -t fedora /bin/bash
+
+sudo groupadd docker
+sudo usermod -aG docker crh
+# logout/in to pickup group
+
+
 [crh@xps dsp]$ sudo docker run fedora /bin/echo hello world
 hello world
 

@@ -1,0 +1,74 @@
+Thu Jun 15 14:32:51 EDT 2017
+
+REF:  https://hub.docker.com/r/continuumio/anaconda3/
+
+docker pull continuumio/anaconda3
+docker run -i -t continuumio/anaconda3 /bin/bash
+
+Usage
+You can download and run this image using the following commands:
+
+docker pull continuumio/anaconda3
+docker run -i -t continuumio/anaconda3 /bin/bash
+Alternatively, you can start a Jupyter Notebook server and interact with Anaconda via your browser:
+
+docker run -i -t -p 8888:8888 continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser"
+You can then view the Jupyter Notebook by opening http://localhost:8888 in your browser, or http://<DOCKER-MACHINE-IP>:8888 if you are using a Docker Machine VM.
+
+
+----
+https://docs.docker.com/engine/reference/commandline/commit/
+https://docs.docker.com/get-started/#setup
+https://docs.docker.com/engine/userguide/
+
+
+Then get the container id using this command:
+
+sudo docker ps -l
+Commit changes to the container:
+
+sudo docker commit <container_id> iman/ping 
+Then run the container:
+
+sudo docker run iman/ping ping www.google.com
+This should work.
+
+[crh@xps anaconda3]$ docker run hello-world
+Unable to find image 'hello-world:latest' locally
+Trying to pull repository docker.io/library/hello-world ... 
+sha256:f3b3b28a45160805bb16542c9531888519430e9e6d6ffc09d72261b0d26ff74f: Pulling from docker.io/library/hello-world
+b04784fba78d: Pull complete 
+Digest: sha256:f3b3b28a45160805bb16542c9531888519430e9e6d6ffc09d72261b0d26ff74f
+Status: Downloaded newer image for docker.io/hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://cloud.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/engine/userguide/
+
+
+---- data volumes 
+ . use to keep data and keep it separate from image
+
+https://docs.docker.com/engine/tutorials/dockervolumes/
+
+- volumes proved a rabbit hole.
+- among other things note:
+ 1) you should probably just use docker run -v host-path:container-path and be done
+ 2) the VOLUME command in Docker file does almost nothing except provide a note
+

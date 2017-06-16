@@ -1,0 +1,3 @@
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+# The first one cleans all dangling images. This is useful for removing intermediate images left over from multiple builds. The second one is for removing stopped containers. These are aliases I use for routine maintenance
