@@ -8,11 +8,13 @@ HackerRank Info:
 01b-install_jupyter.md - todo!
 02-editors.md - done (although revisit PyCharm and atom and Rodeo)
 03-command_line.md - done
-04-git.md 
+04-git.md - done
+next: read more of http://git-scm.com/book/en/v2
 05a-python.md - hackerrank - done
 05b-python_advanced.md - hackerrank - done
-05c-python_pandas.md - hackerrank - https://www.hackerrank.com/tests/beg202nchad/a3ae8be11d8345e83400e68ea9fa10e5
-06-linear_algebra.md
+05c-python_pandas.md - hackerrank - https://www.hackerrank.com/tests/beg202nchad/a3ae8be11d8345e83400e68ea9fa10e5 - done
+06-linear_algebra.md - harckerrank - http://thisismetis.us3.list-manage2.com/track/click?u=a13fe84fe221defe011ff0d93&id=f9bace37cf&e=2dc3f53bdb - done
+
 07-statistics.md
 08-more_resources.md
 1/ Using Linux fedora 25 on Dell XPS.
