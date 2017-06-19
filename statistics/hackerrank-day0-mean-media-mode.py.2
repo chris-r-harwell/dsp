@@ -1,0 +1,94 @@
+#!/bin/env python3
+"""
+mean = a.k.a. average. sum all, divide by count
+
+
+median = midpoint value of
+a data set for which an equal number of samples are less than and greater
+than the value. For an odd sample size, this is the middle element of
+the sorted sample; for an even sample size, this is the average of the
+2 middle elements of the sorted sample.
+
+mode = element(s) that occur most frequently in a data set. If not number
+in the set appears more times than 1 then every number in the set is a
+valid mode and it is considered multimodal.
+
+precision = number of sig figs.  scale = number of sig figs to the right
+of the decimal point.
+
+INPUT: 2 lines
+ 1 int N number of elements in the array 1 n space separated integers
+ describing the array's elements
+
+Constraints:
+     10 <= N <= 2500 0 < x_i <= 10**5, where x_i is the i_th element of
+     the array
+OUTPUT: 3 lines
+ mean, scale of 1 decimal place median, scale of 1 decimal place mode,
+ if more than one such value exists print the numerically smallest one.
+
+
+note also that import statistics is available for mean, median and mode,
+though mode will throw an exception if there is not one mode.
+"""
+
+
+def get_mean(a, n):
+    """
+    INPUT: sorted array, num elements
+    OUTPUT: mean a.k.a. average
+    """
+    return sum(a)/n
+
+
+def get_median(a, n):
+    """
+    INPUT: sorted array, num elements
+    OUTPUT: median, middle number if odd,
+    average of middle two numbers if even.
+    """
+    mid = n // 2
+    median = a[mid]
+    if n % 2 == 0:
+        mid -= 1
+        median += a[mid]
+        median /= 2
+
+    return median
+
+
+def get_mode(a):
+    """
+    INPUT: sorted array, num elements
+    OUTPUT: smallest mode
+    find the modes by
+    first creating a dictionary
+     - with keys from the unique values in the list
+     - and values for the number of times they occur in the list
+    find the maximum
+    collect the modes with that maximum in a list
+    and return the smallest element
+    """
+    modes = []
+    b = dict.fromkeys(set(a), 1)
+    for k in b.keys():
+        b[k] = a.count(k)
+    largest = max(b.values())
+    for k, v in b.items():
+        if v == largest:
+            modes.append(k)
+    modes.sort()
+    mode = min(modes)
+    return mode
+
+
+def p1print(a):
+    print("{:.1f}".format(round(a, 1)))
+
+
+if __name__ == '__main__':
+    n = int(input())
+    array = sorted(list(map(int, input().split())))
+    p1print(get_mean(array, n))
+    p1print(get_median(array, n))
+    print(get_mode(array))

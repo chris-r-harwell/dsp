@@ -1,0 +1,30 @@
+#!/bin/env python3
+from scipy import stats
+
+
+def get_median(a, n):
+    """
+    INPUT: sorted array, num elements
+    OUTPUT: median, middle number if odd,
+    average of middle two numbers if even.
+    """
+    mid = n // 2
+    median = a[mid]
+    if n % 2 == 0:
+        mid -= 1
+        median += a[mid]
+        median /= 2
+
+    return median
+
+
+def p1print(a):
+    print("{:.1f}".format(round(a, 1)))
+
+
+if __name__ == '__main__':
+    n = int(input())
+    array = sorted(list(map(int, input().split())))
+    p1print(sum(array)/n)
+    p1print(get_median(array, n))
+    print(int(stats.mode(array)[0]))

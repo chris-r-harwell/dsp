@@ -15,7 +15,11 @@ next: read more of http://git-scm.com/book/en/v2
 05c-python_pandas.md - hackerrank - https://www.hackerrank.com/tests/beg202nchad/a3ae8be11d8345e83400e68ea9fa10e5 - done
 06-linear_algebra.md - harckerrank - http://thisismetis.us3.list-manage2.com/track/click?u=a13fe84fe221defe011ff0d93&id=f9bace37cf&e=2dc3f53bdb - done
 
-07-statistics.md
+07-statistics.md - 
+ - https://github.com/thisismetis/dsp/blob/master/07-statistics.md?mc_cid=ac2b0f9662&mc_eid=2dc3f53bdb
+ - cloned.
+ - add to ../ThinkStats2/code/
+
 08-more_resources.md
 1/ Using Linux fedora 25 on Dell XPS.
 
@@ -345,4 +349,14 @@ jupyter-kernelspec        jupyter-nbconvert         jupyter-qtconsole-3.5
 
 but then 
 [W 18:00:43.870 NotebookApp] Native kernel (python3) is not available
+
+Mon Jun 19 07:40:47 EDT 2017
+  cd ..
+[crh@xps git]$ git clone git@github.com:AllenDowney/ThinkStats2.git
+Cloning into 'ThinkStats2'...
+remote: Counting objects: 1731, done.
+remote: Total 1731 (delta 0), reused 0 (delta 0), pack-reused 1731
+Receiving objects: 100% (1731/1731), 141.56 MiB | 5.44 MiB/s, done.
+Resolving deltas: 100% (1062/1062), done.
+Checking connectivity... done.
 

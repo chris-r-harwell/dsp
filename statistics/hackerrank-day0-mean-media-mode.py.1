@@ -1,0 +1,43 @@
+#!/bin/env python3
+"""
+mean = a.k.a. average. sum all, divide by count
+
+
+median = midpoint value of
+a data set for which an equal number of samples are less than and greater
+than the value. For an odd sample size, this is the middle element of
+the sorted sample; for an even sample size, this is the average of the
+2 middle elements of the sorted sample.
+
+mode = element(s) that occur most frequently in a data set. If not number
+in the set appears more times than 1 then every number in the set is a
+valid mode and it is considered multimodal.
+
+precision = number of sig figs.  scale = number of sig figs to the right
+of the decimal point.
+
+INPUT: 2 lines
+ 1 int N number of elements in the array 1 n space separated integers
+ describing the array's elements
+
+Constraints:
+     10 <= N <= 2500 0 < x_i <= 10**5, where x_i is the i_th element of
+     the array
+OUTPUT: 3 lines
+ mean, scale of 1 decimal place median, scale of 1 decimal place mode,
+ if more than one such value exists print the numerically smallest one.
+
+
+"""
+import statistics as s
+
+
+if __name__ == '__main__':
+    n = input()
+    array = list(map(int, input().split()))
+    print(round(s.mean(array), 1))
+    print(round(s.median(array), 1))
+    try mymode = s.mode(array):
+        print(mymode)
+    except statistics.StatisticsError:
+
