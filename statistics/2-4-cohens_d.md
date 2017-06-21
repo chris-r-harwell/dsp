@@ -1,9 +1,10 @@
 [Think Stats Chapter 2 Exercise 4](http://greenteapress.com/thinkstats2/html/thinkstats2003.html#toc24) (Cohen's d)
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+---
+
 #### Table of Contents
-[1) Code](#section-a)
-[2) Results](#section-b)
+[1) Code](#section-a)  
+[2) Results](#section-b)  
 [3) Explanation](#section-c)
 
 ---
