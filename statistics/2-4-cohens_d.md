@@ -50,7 +50,7 @@ debug = False
 
 
 def dprint(s):
-    if debug == True:
+    if debug:
         print(repr(s))
 
 
