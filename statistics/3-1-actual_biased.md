@@ -114,6 +114,6 @@ Comparing the actual and the biased probability mass function plots, we see that
 
 That is you'd think there were on average two children per household, from a survey of children, but there is really an average of one.
 
-See numkdhh_pmf_and_biased.eps for a comparison.
+See file:///numkdhh_pmf_and_biased.eps for a comparison.
 
 ---
