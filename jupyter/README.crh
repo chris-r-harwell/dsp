@@ -72,3 +72,123 @@ https://docs.docker.com/engine/tutorials/dockervolumes/
  1) you should probably just use docker run -v host-path:container-path and be done
  2) the VOLUME command in Docker file does almost nothing except provide a note
 
+
+[crh@xps docker-anaconda-python3]$ jobs
+[crh@xps docker-anaconda-python3]$ ./doit.sh 
+Sending build context to Docker daemon 4.096 kB
+Step 1 : FROM continuumio/anaconda3
+ ---> f3a9cb1bc160
+Step 2 : USER root
+ ---> Using cache
+ ---> 998f7996b9f5
+Step 3 : RUN /opt/conda/bin/conda install jupyter -y
+ ---> Using cache
+ ---> b47c55c8150b
+Step 4 : RUN mkdir -p /home/crh
+ ---> Using cache
+ ---> f56656cf891c
+Step 5 : RUN useradd -d /home/crh crh
+ ---> Using cache
+ ---> 6c80b7bd6b87
+Step 6 : RUN chown -v -R crh /home/crh
+ ---> Using cache
+ ---> 7a712c29f054
+Step 7 : RUN chmod -v -R u+w+X+r /home/crh
+ ---> Using cache
+ ---> 12310aac7692
+Step 8 : RUN ls -dl /home/crh
+ ---> Using cache
+ ---> 9d8e2cc67d6e
+Step 9 : USER crh
+ ---> Using cache
+ ---> 3aa8fd865c18
+Step 10 : WORKDIR ["/home/crh"]
+ ---> Using cache
+ ---> ef922ffd65e5
+Step 11 : RUN pwd
+ ---> Using cache
+ ---> 6d9012907757
+Step 12 : RUN ls -ld .
+ ---> Using cache
+ ---> 7bbeb05d2463
+Step 13 : RUN whoami
+ ---> Using cache
+ ---> 9c518186c3cd
+Step 14 : RUN touch /home/crh/hi
+ ---> Using cache
+ ---> d21600af4b87
+Step 15 : EXPOSE 8888
+ ---> Using cache
+ ---> e3de398d446f
+Step 16 : VOLUME /opt/notebooks
+ ---> Using cache
+ ---> 147c253165b2
+Step 17 : CMD bash -c "cd /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser"
+ ---> Using cache
+ ---> 99e9b2e850c9
+Successfully built 99e9b2e850c9
+[I 18:57:34.627 NotebookApp] Writing notebook server cookie secret to /home/crh/.local/share/jupyter/runtime/notebook_cookie_secret
+[W 18:57:34.671 NotebookApp] WARNING: The notebook server is listening on all IP addresses and not using encryption. This is not recommended.
+[I 18:57:34.685 NotebookApp] Serving notebooks from local directory: /opt/notebooks
+[I 18:57:34.685 NotebookApp] 0 active kernels 
+[I 18:57:34.685 NotebookApp] The Jupyter Notebook is running at: http://[all ip addresses on your system]:8888/?token=927b524ec94ff7b2a01be82be23e9999b5b43adccc57f9f7
+[I 18:57:34.685 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 18:57:34.686 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=927b524ec94ff7b2a01be82be23e9999b5b43adccc57f9f7
+[I 18:57:41.350 NotebookApp] 302 GET /?token=927b524ec94ff7b2a01be82be23e9999b5b43adccc57f9f7 (172.17.0.1) 1.21ms
+[I 19:18:35.400 NotebookApp] Writing notebook-signing key to /home/crh/.local/share/jupyter/notebook_secret
+[W 19:18:35.403 NotebookApp] Notebook 1_pandas_jeopardy_example.ipynb is not trusted
+[I 19:18:36.296 NotebookApp] Kernel started: e6137983-c15c-4557-a6de-87ccd5dd7d5f
+[W 19:20:11.407 NotebookApp] Notebook 2_pandas_olive_questions.ipynb is not trusted
+[I 19:20:12.521 NotebookApp] Kernel started: aa0ee296-281a-4db9-934e-33e88df5a7ec
+[I 19:20:36.255 NotebookApp] Saving file at /1_pandas_jeopardy_example.ipynb
+[W 19:20:36.256 NotebookApp] Saving untrusted notebook 1_pandas_jeopardy_example.ipynb
+[I 19:22:12.530 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 19:24:12.524 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+
+
+
+
+Megan Ayraud[W 19:20:11.407 NotebookApp] Notebook 2_pandas_olive_questions.ipynb is not trusted
+[I 19:20:12.521 NotebookApp] Kernel started: aa0ee296-281a-4db9-934e-33e88df5a7ec
+[I 00:50:45.851 NotebookApp] Saving file at /1_pandas_jeopardy_example.ipynb
+[W 00:50:45.855 NotebookApp] Saving untrusted notebook 1_pandas_jeopardy_example.ipynb
+[I 00:56:22.148 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 00:57:39.525 NotebookApp] Kernel interrupted: aa0ee296-281a-4db9-934e-33e88df5a7ec
+[I 00:58:22.116 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 01:00:22.115 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 01:01:56.215 NotebookApp] Kernel interrupted: aa0ee296-281a-4db9-934e-33e88df5a7ec
+[I 01:02:22.115 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 01:03:07.245 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 01:20:22.113 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 01:22:22.125 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 01:24:17.712 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+[I 01:26:46.339 NotebookApp] Saving file at /1_pandas_jeopardy_example.ipynb
+[W 01:26:46.341 NotebookApp] Saving untrusted notebook 1_pandas_jeopardy_example.ipynb
+
+
+[W 22:35:25.642 NotebookApp] Notebook 1_pandas_jeopardy_example.ipynb is not trusted
+[I 12:39:30.365 NotebookApp] Saving file at /1_pandas_jeopardy_example.ipynb
+[W 12:39:30.370 NotebookApp] Saving untrusted notebook 1_pandas_jeopardy_example.ipynb
+[I 12:39:37.108 NotebookApp] Saving file at /2_pandas_olive_questions.ipynb
+
+
+[crh@xps jupyter]$ sudo docker ps
+CONTAINER ID        IMAGE                                    COMMAND                  CREATED             STATUS              PORTS                    NAMES
+b2a89fc80e54        supercrh/anaconda3-juptyer-for-pandas1   "/usr/bin/tini -- /bi"   6 days ago          Up 6 days           0.0.0.0:8888->8888/tcp   focused_shaw
+[crh@xps jupyter]$ sudo docker stop
+"docker stop" requires at least 1 argument(s).
+See 'docker stop --help'.
+
+Usage:  docker stop [OPTIONS] CONTAINER [CONTAINER...]
+
+Stop one or more running containers
+[crh@xps jupyter]$ sudo docker stop b2a89fc80e54
+b2a89fc80e54
+[crh@xps jupyter]$ sudo docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[crh@xps jupyter]$ 
+Fri Jun 23 11:26:47 EDT 2017
