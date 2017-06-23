@@ -37,7 +37,7 @@ s_pmf = thinkstats2.Pmf(s)
 # plot PMF
 thinkplot.Pmf(s_pmf)
 thinkplot.Config(xlabel='random number', ylabel='PMF')
-thinkplot.Save(root='metis_q3_ch4_ex2_rnd_pmf')
+thinkplot.Save(root='metis_q3_ch4_ex2_rnd_pmf', formats=['png'])
 
 # CDF: cummulative distribution function
 s_cdf = thinkstats2.Cdf(s)
@@ -45,23 +45,22 @@ s_cdf = thinkstats2.Cdf(s)
 # plot CDF
 thinkplot.Cdf(s_cdf)
 thinkplot.Config(xlabel='random number', ylabel='CDF')
-thinkplot.Save(root='metis_q3_ch4_ex2_rnd_cdf')
+thinkplot.Save(root='metis_q3_ch4_ex2_rnd_cdf', formats=['png'])
 ```
 ---
 
 ## <a name="section-b">2) Results</a>
 ```console
 ThinkStats2/code/metis_q3_ch4_ex2.py 
-Writing metis_q3_ch4_ex2_rnd_pmf.pdf
-Writing metis_q3_ch4_ex2_rnd_pmf.eps
-Writing metis_q3_ch4_ex2_rnd_cdf.pdf
-Writing metis_q3_ch4_ex2_rnd_cdf.eps
+Writing metis_q3_ch4_ex2_rnd_pmf.png
+Writing metis_q3_ch4_ex2_rnd_cdf.png
 
 ```
 
-![PMF plot](https://github.com/chris-r-harwell/dsp/raw/master/statistics/metis_q3_ch4_ex2_rnd_pmf.eps)
+![PMF plot](https://github.com/chris-r-harwell/dsp/raw/master/statistics/metis_q3_ch4_ex2_rnd_pmf.png)
+![PMF plot](https://github.com/chris-r-harwell/dsp/blob/master/statistics/metis_q3_ch4_ex2_rnd_pmf.png)
 
-![CDF plot](https://github.com/chris-r-harwell/dsp/raw/master/statistics/metis_q3_ch4_ex2_rnd_cdf.eps)
+![CDF plot](https://github.com/chris-r-harwell/dsp/raw/master/statistics/metis_q3_ch4_ex2_rnd_cdf.png)
 ---
 
 ## <a name="section-c">3) Explanation</a>
@@ -69,6 +68,6 @@ Writing metis_q3_ch4_ex2_rnd_cdf.eps
 
 Result: Yes, the distribution of numbers from numpy.random.random_sample is uniform as indicated by the diaganol line in the cdf plot.
 
-See files metis_q3_ch4_ex2_rnd_pmf.pdf metis_q3_ch4_ex2_rnd_cdf.pdf
+See files metis_q3_ch4_ex2_rnd_pmf.png metis_q3_ch4_ex2_rnd_cdf.png
 
 ---
