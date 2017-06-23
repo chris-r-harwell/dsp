@@ -57,10 +57,9 @@ Writing metis_q3_ch4_ex2_rnd_cdf.png
 
 ```
 
-![PMF plot](https://github.com/chris-r-harwell/dsp/raw/master/statistics/metis_q3_ch4_ex2_rnd_pmf.png)
 ![PMF plot](https://github.com/chris-r-harwell/dsp/blob/master/statistics/metis_q3_ch4_ex2_rnd_pmf.png)
 
-![CDF plot](https://github.com/chris-r-harwell/dsp/raw/master/statistics/metis_q3_ch4_ex2_rnd_cdf.png)
+![CDF plot](https://github.com/chris-r-harwell/dsp/blob/master/statistics/metis_q3_ch4_ex2_rnd_cdf.png)
 ---
 
 ## <a name="section-c">3) Explanation</a>
