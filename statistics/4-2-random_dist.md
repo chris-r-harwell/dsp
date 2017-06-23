@@ -58,6 +58,10 @@ Writing metis_q3_ch4_ex2_rnd_cdf.pdf
 Writing metis_q3_ch4_ex2_rnd_cdf.eps
 
 ```
+
+![PMF plot](https://github.com/chris-r-harwell/dsp/raw/master/statistics/metis_q3_ch4_ex2_rnd_pmf.eps)
+
+![CDF plot](https://github.com/chris-r-harwell/dsp/raw/master/statistics/metis_q3_ch4_ex2_rnd_cdf.eps)
 ---
 
 ## <a name="section-c">3) Explanation</a>
@@ -65,8 +69,6 @@ Writing metis_q3_ch4_ex2_rnd_cdf.eps
 
 Result: Yes, the distribution of numbers from numpy.random.random_sample is uniform as indicated by the diaganol line in the cdf plot.
 
-See 
-[PMF plot](file:///metis_q3_ch4_ex2_rnd_pmf.pdf)
-[CDF plot](file:///metis_q3_ch4_ex2_rnd_cdf.pdf)
+See files metis_q3_ch4_ex2_rnd_pmf.pdf metis_q3_ch4_ex2_rnd_cdf.pdf
 
 ---
