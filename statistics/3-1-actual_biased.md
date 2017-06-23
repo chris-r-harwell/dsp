@@ -106,6 +106,8 @@ actual: 1.0242
 biased: 2.4037
 
 ```
+![PMF plot](https://github.com/chris-r-harwell/dsp/blob/master/statistics/numkdhh_pmf_and_biased.png)
+
 ---
 
 ## <a name="section-c">3) Explanation</a>
