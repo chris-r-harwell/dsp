@@ -63,8 +63,6 @@ Model from cummulative distribution function of normal distribution predicts 34.
 
 ```
 
-![plot](https://github.com/chris-r-harwell/dsp/blob/master/statistics/plot.png)
-
 ---
 
 ## <a name="section-c">3) Explanation</a>
