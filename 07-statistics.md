@@ -92,8 +92,6 @@ Probability of being either fraternal or identical twin must be sum of probabili
 
 
 ```
-[//]: # "Comment" How much more likely is identical compared to fraternal?  
-[//]: # "Comment"    1/125 / 1/300 = (1/125) * (300/1) = 300/125 = 12/5
 Bayes' Theorem:  
 
 ```
