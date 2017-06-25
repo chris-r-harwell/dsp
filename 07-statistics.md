@@ -89,11 +89,12 @@ Elvis Presley had a twin brother who died at birth.  What is the probability tha
 Probability of being either fraternal or identical twin must be sum of probabilities of either:  
 ```
     1/300 + 1/125 = 34/3000 = 17/1500 ~= .011.
+
+
 ```
-How much more likely is identical compared to fraternal?  
-```
-    1/125 / 1/300 = (1/125) * (300/1) = 300/125 = 12/5
-```
+[//]: # "Comment" How much more likely is identical compared to fraternal?  
+[//]: # "Comment"    1/125 / 1/300 = (1/125) * (300/1) = 300/125 = 12/5
+Bayes' Theorem:  
 
 ```
 p(A) = identical twin = 1/300
