@@ -116,7 +116,7 @@ p(A|B) = p(B|A) * p(A) / p(B)
 ### Q6. Bayesian &amp; Frequentist Comparison  
 How do frequentist and Bayesian statistics compare?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Bayesian and frequentist statistics both try to make a prediction about the likelihood of the next event given some information. That is, they both deal with probability. Using a strictly frequentist approach, an experiment would be performed with the assumption that, over the long run, because of reproducibility, that the observed frequency of the event of interest, within a very large number of trials, is best used to predict the next events.  Start with no prediction, just an assumption of reproducibility and that truth will be approached with a large number of trials and measure that frequency. A Bayesian approach would start with some prior estimation, even if it meant incorporating some logical reasoning, and then adjusting, perhaps using the very same information from the frequentist experiment.
 
 ---
 
