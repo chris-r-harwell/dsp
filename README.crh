@@ -360,3 +360,4 @@ Receiving objects: 100% (1731/1731), 141.56 MiB | 5.44 MiB/s, done.
 Resolving deltas: 100% (1062/1062), done.
 Checking connectivity... done.
 
+git config --global credentials.helper cache
